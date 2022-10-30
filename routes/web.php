@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
+use App\Http\Controllers\Post\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +16,24 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return redirect('posts/list');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('posts')->group(function () {
+    Route::get('list', [PostController::class, 'list'])
+        ->name('posts.list');
+    Route::get('view/{post}', [PostController::class, 'view'])
+        ->name('posts.view');
+    Route::middleware('auth')->group(function() {
+        Route::get('view', [PostController::class, 'viewnew'])
+            ->name('posts.viewnew');
+        Route::post('view', [PostController::class, 'edit'])
+            ->name('posts.edit');
+        Route::post('react/{post}', [PostController::class, 'react'])
+            ->name('posts.react');
+        Route::delete('view/{post}', [PostController::class, 'delete'])
+            ->name('posts.delete');
+    });
+});
 
 require __DIR__.'/auth.php';

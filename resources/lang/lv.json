@@ -1,0 +1,41 @@
+{
+  "general": {
+    "action": {
+      "cancel": "Atcelt",
+      "delete": "Dzēst",
+      "save": "Sagalabāt"
+    }
+  },
+  "pagination": {
+    "previous": "<",
+    "next": ">"
+  },
+  "route": {
+    "posts": {
+        "list": "Bloga ieraksti"
+    },
+    "login": "Pieteikties",
+    "logout": "Atteikties",
+    "register": "Reģistrēties"
+  },
+  "post": {
+    "action": {
+      "new": "Jauns bloga ieraksts",
+      "edit": "Rediģet ierakstu"
+    },
+    "status_id": "Statuss",
+    "status": {
+      "DRAFT": "Sagatave",
+      "PUBLISHED": "Publicēts"
+    },
+    "title": "Nosaukums",
+    "content": "Saturs"
+  },
+  "reaction": {
+    "LIKE": "Patīk"
+  },
+  "user": {
+    "email": "E-pasts",
+    "password": "Parole"
+  }
+}
